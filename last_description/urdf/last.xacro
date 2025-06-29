@@ -238,14 +238,27 @@
     </collision>
   </link>
 
-  <link name="zed_camera_link">
+<link name="camera_link">
   <visual>
     <geometry>
-      <box size="0.15 0.06 0.06"/>
+      <box>
+        <size>0.05 0.05 0.05</size>
+      </box>
     </geometry>
-    <material name="black"/>
   </visual>
+  <collision>
+    <geometry>
+      <box>
+        <size>0.05 0.05 0.05</size>
+      </box>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="0.1"/>
+    <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+  </inertial>
 </link>
+
 
 
   <joint name="sol_front_leg_joint" type="fixed">
@@ -312,9 +325,9 @@
     <axis xyz="0.0 1.0 0.0"/>
   </joint>
 
- <joint name="zed_camera_joint" type="fixed">
-  <parent link="base_link"/> <!-- ya da kameranın bağlı olacağı link -->
-  <child link="zed_camera_link"/>
+ <joint name="camera_joint" type="fixed">
+  <parent link="base_link"/> <!-- robotuna göre değiştir -->
+  <child link="camera_link"/>
   <origin xyz="1.05 0.35 0.34" rpy="0 0 0"/> <!-- Burayı istediğin pozisyona göre ayarlayabilirsin -->
 </joint>
 
